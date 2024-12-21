@@ -10,13 +10,11 @@ class TreeNode:
         self.left = left
         self.right = right
 
-from typing import Optional
-
 # @lc code=start
 class Solution:
-    def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        def traverse(left_node: TreeNode, right_node: TreeNode, level: int) -> None:
-            if left_node is None:
+    def reverseOddLevels(self, root: TreeNode | None) -> TreeNode | None:
+        def traverse(left_node: TreeNode | None, right_node: TreeNode | None, level: int) -> None:
+            if left_node is None or right_node is None:
                 return
             
             if level % 2 != 0:
