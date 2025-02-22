@@ -13,7 +13,7 @@ class Solution:
         Do not return anything, modify matrix in-place instead.
         """
         for row_index in range(0, len(matrix)):
-            for col_index in range (len(matrix) - 1, -1, -1):
+            for col_index in range(len(matrix) - 1, -1, -1):
                 row = matrix[row_index]
                 value = row[len(row) - 1]
                 del row[len(row) - 1]
