@@ -36,7 +36,7 @@ class Solution:
                 dots_remainign = n - column_index - 1
                 next_valid_rows.append(next_row + "Q" + "." * dots_remainign)
 
-            next_row += "."        
+            next_row += "."
         
         return next_valid_rows
 
