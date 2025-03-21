@@ -41,18 +41,18 @@ class Solution:
         return next_valid_rows
 
     def solveNQueens(self, n: int) -> List[List[str]]:
-        def dfs(board: List[str]):
+        def backtracking(board: List[str]):
             correct_boards = []
             if len(board) == n:
                 correct_boards.append(board)
             else:
                 possible_next_rows = self.get_next_valid_rows(board, n)
                 for row_option in possible_next_rows:
-                    correct_boards += dfs(board + [row_option])
+                    correct_boards += backtracking(board + [row_option])
 
             return correct_boards
 
-        return dfs([])
+        return backtracking([])
 
 
 # @lc code=end
