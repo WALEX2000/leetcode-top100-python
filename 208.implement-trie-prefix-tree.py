@@ -3,28 +3,28 @@
 #
 # [208] Implement Trie (Prefix Tree)
 #
-from typing import Dict, List
+from typing import Set
 # @lc code=start
 class Trie:
 
     def __init__(self):
-        self.key_map : Dict[str, List[str]] = dict()
+        self.key_map : Set[str] = set()
+        self.word_map : Set[str] = set()
         
 
     def insert(self, word: str) -> None:
-        for i in range(1, len(word) + 1):
+        self.word_map.add(word)
+        for i in range(1, len(word)+1):
             prefix = word[:i]
-            if not self.key_map.get(prefix):
-                self.key_map[prefix] = []
-            self.key_map[prefix].append(word)
+            self.key_map.add(prefix)
         
 
     def search(self, word: str) -> bool:
-        return word in self.key_map.get(word, [])
+        return word in self.word_map
         
 
     def startsWith(self, prefix: str) -> bool:
-        return len(self.key_map.get(prefix, [])) > 0
+        return prefix in self.key_map
         
 
 
