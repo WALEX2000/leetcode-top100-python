@@ -14,31 +14,22 @@ class TreeNode:
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root:
-            return []
-        
-        result = [[root.val]]
-        level = [root]
-        def bfs(level : List[TreeNode]):
+        def bfs(level : List[TreeNode]) -> List[List[int]]:
             new_level = []
-            new_level_values = []
+            level_values = []
             
             for node in level:
-                if node.left:
+                if node:
+                    level_values.append(node.val)
                     new_level.append(node.left)
-                    new_level_values.append(node.left.val)
-                if node.right:
                     new_level.append(node.right)
-                    new_level_values.append(node.right.val)
             
             if not new_level:
-                return
+                return level_values
+            else:
+                return [level_values] + bfs(new_level)
             
-            result.append(new_level_values)
-            bfs(new_level)
-            
-        bfs(level)
-        return result
+        return bfs([root])
         
 # @lc code=end
 
