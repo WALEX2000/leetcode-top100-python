@@ -11,14 +11,10 @@ class Solution:
 
         stack = []
         for idx, temperature in enumerate(temperatures):
-            while stack:
-                previous_idx = stack[-1]
-                previous_temperature = temperatures[previous_idx]
-                if temperature > previous_temperature:
-                    answer[previous_idx] = idx - previous_idx
-                    stack = stack[:-1]
-                else:
-                    break
+
+            while stack and temperature > temperatures[stack[-1]]:
+                previous_idx = stack.pop()
+                answer[previous_idx] = idx - previous_idx
             
             stack.append(idx)
 
