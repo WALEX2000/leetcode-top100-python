@@ -7,14 +7,21 @@ from typing import List
 # @lc code=start
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        answer = []
+        answer = [0] * len(temperatures)
+
+        stack = []
         for idx, temperature in enumerate(temperatures):
-            answer.append(0)
-            for next_idx, next_temperature in enumerate(temperatures[idx+1:]):
-                if next_temperature > temperature:
-                    answer[idx] = next_idx + 1
+            while stack:
+                previous_idx = stack[-1]
+                previous_temperature = temperatures[previous_idx]
+                if temperature > previous_temperature:
+                    answer[previous_idx] = idx - previous_idx
+                    stack = stack[:-1]
+                else:
                     break
-        
+            
+            stack.append(idx)
+
         return answer
 # @lc code=end
 
