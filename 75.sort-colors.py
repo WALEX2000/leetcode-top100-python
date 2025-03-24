@@ -10,11 +10,9 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        tmp_nums = nums[:]
-        counter = 0
         counter_0 = 0
-        for color in tmp_nums:
-            nums.pop()
+        for counter in range(len(nums)):
+            color = nums.pop()
             if color == 0:
                 nums.insert(0,0)
                 counter_0 += 1
@@ -22,7 +20,6 @@ class Solution:
                 nums.insert(counter, 2)
             elif color == 1:
                 nums.insert(counter_0, 1)
-            counter += 1
 
 
 # @lc code=end
