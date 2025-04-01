@@ -3,6 +3,7 @@
 #
 # [2415] Reverse Odd Levels of Binary Tree
 #
+from __future__ import annotations
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -28,4 +29,3 @@ class Solution:
         return root
         
 # @lc code=end
-
