@@ -15,13 +15,15 @@ class ListNode:
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        visited_nodes : set[ListNode] = set()
         node = head
+        previous_node = None
         while node:
-            if node in visited_nodes:
+            next_node = node.next
+            node.next = previous_node
+            previous_node = node
+            node = next_node
+            if node is head:
                 return True
-            visited_nodes.add(node)
-            node = node.next
 
         return False
         
