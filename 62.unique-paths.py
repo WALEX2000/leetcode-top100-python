@@ -5,11 +5,15 @@
 #
 
 # @lc code=start
+from functools import cache
+
+
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         num_down = m - 1
         num_right = n - 1
         
+        @cache
         def construct_moves(right_moves: int, down_moves: int):
             constructed_moves = 0
             if right_moves == 0 or down_moves == 0:
